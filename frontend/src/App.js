@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
+export const URL = process.env.FRONTEND_URL || "http://localhost:5000";
+
 const App = () => {
   return (
     <>
