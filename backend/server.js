@@ -1,5 +1,6 @@
 import express from 'express';
 import products from './data/products.js';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 import cors from "cors";
@@ -22,6 +23,13 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`App listening on port ${PORT}!`);
+    });
+  })
+  .catch((e) => {
+    console.log(e);
+  });
