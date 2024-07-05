@@ -324,6 +324,16 @@ h1,
   }
 }
 
-.min-vh-80 {
-  min-height: 80vh;
+footer {
+  margin-top: auto;
+}
+
+.custom-link {
+  color: #2e3338;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: #343a40;
+  text-decoration: underline;
 }
