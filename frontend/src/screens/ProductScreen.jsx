@@ -10,24 +10,39 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useGetProductByIdQuery } from "../slices/productsApiSlice";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { addToCart } from "../slices/cartSlice";
+import { useAddToCartMutation } from "../slices/cartApiSlice";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [addToCart] = useAddToCartMutation();
 
   const [qty, setQty] = useState(1);
 
   const { data: product, isLoading, error } = useGetProductByIdQuery(productId);
-  const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, qty }));
-    navigate("/cart");
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const addToCartHandler = async () => {
+    if (userInfo) {
+      await addToCart({
+        product: product._id,
+        name: product.name,
+        quantity: qty,
+        price: product.price,
+        image: product.image,
+      }).unwrap();
+      
+      navigate("/cart", { state: { refetch: true } });
+    } else {
+      navigate(`/login?redirect=/product/${productId}`);
+    }
   };
 
   return (

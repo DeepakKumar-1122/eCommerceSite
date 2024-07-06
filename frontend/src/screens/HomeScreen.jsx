@@ -2,6 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 import Message from "../components/Message";
+import Loader from "../components/Loader";
 
 const HomeScreen = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
@@ -9,11 +10,7 @@ const HomeScreen = () => {
   return (
     <>
       {isLoading ? (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
+        <Loader />
       ) : error ? (
         <Message variant="danger">
           {error?.data?.message || error.error}
