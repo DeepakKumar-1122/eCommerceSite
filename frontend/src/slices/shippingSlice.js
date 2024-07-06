@@ -4,7 +4,7 @@ import { updateCart } from "../utils/cartUtils";
 const initialState = localStorage.getItem("shipping")
   ? JSON.parse(localStorage.getItem("shipping"))
   : {
-      orderItems: [],
+      // orderItems: [],
       shippingAddress: {},
       paymentMethod: "",
       itemsPrice: 0,
@@ -21,11 +21,11 @@ const shippingSlice = createSlice({
       state.shippingAddress = action.payload;
       localStorage.setItem("shipping", JSON.stringify(state));
     },
-    setOrderItems: (state, action) => {
-      state.orderItems = action.payload;
-      updateCart(state);
-      localStorage.setItem("shipping", JSON.stringify(state));
-    },
+    // setOrderItems: (state, action) => {
+    //   state.orderItems = action.payload;
+    //   updateCart(state);
+    //   localStorage.setItem("shipping", JSON.stringify(state));
+    // },
     setPrices: (state) => {
       updateCart(state);
       localStorage.setItem("shipping", JSON.stringify(state));
@@ -36,11 +36,12 @@ const shippingSlice = createSlice({
     },
     resetShipping: (state) => {
       state.shippingAddress = initialState.shippingAddress;
-      state.orderItems = initialState.orderItems;
+      // state.orderItems = initialState.orderItems;
       state.itemsPrice = initialState.itemsPrice;
       state.shippingPrice = initialState.shippingPrice;
       state.taxPrice = initialState.taxPrice;
       state.totalPrice = initialState.totalPrice;
+      state.paymentMethod = initialState.paymentMethod;
       localStorage.removeItem("shipping");
       // localStorage.removeItem('cart');
     },

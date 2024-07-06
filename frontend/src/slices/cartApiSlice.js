@@ -25,6 +25,13 @@ export const cartApiSlice = apiSlice.injectEndpoints({
         credentials: "include",
       }),
     }),
+    clearCart: builder.mutation({
+      query: () => ({
+        url: `${CART_URL}`,
+        method: "DELETE",
+        credentials: "include",
+      }),
+    }),
   }),
 });
 
@@ -32,4 +39,5 @@ export const {
   useGetCartQuery,
   useAddToCartMutation,
   useRemoveFromCartMutation,
+  useClearCartMutation,
 } = cartApiSlice;
