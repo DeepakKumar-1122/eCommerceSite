@@ -344,6 +344,6 @@ footer {
 
 .custom-input:focus {
   box-shadow: none;
-  box-shadow: 0 0 0 0.25rem rgba(100, 99, 99, 0.3);
+  box-shadow: 0 0 0 0.25rem rgba(59, 58, 58, 0.3);
   border-color: rgba(0, 0, 0, 0.5);
 }

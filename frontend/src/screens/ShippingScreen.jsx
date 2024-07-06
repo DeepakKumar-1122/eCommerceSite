@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
 import { setShippingAddress } from "../slices/shippingSlice";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const ShippingScreen = () => {
   const { shippingAddress } = useSelector((state) => state.shipping);
-
+  console.log(shippingAddress);
   const [address, setAddress] = useState(shippingAddress.address || "");
   const [city, setCity] = useState(shippingAddress.city || "");
   const [postalCode, setPostalCode] = useState(
@@ -26,6 +27,7 @@ const ShippingScreen = () => {
 
   return (
     <FormContainer>
+      <CheckoutSteps step1 />
       <h1 className="text-center">Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="my-2" controlId="address">

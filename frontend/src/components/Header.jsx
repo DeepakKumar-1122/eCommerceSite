@@ -5,11 +5,11 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { deleteCredentials } from "../slices/authSlice";
-import logo from "../assets/logo1.png";
 import { useGetCartQuery } from "../slices/cartApiSlice";
+import { resetShipping } from "../slices/shippingSlice";
+import logo from "../assets/logo1.png";
 
 const Header = () => {
-  // const { cartItems } = useSelector((state) => state.cart);
   const { data: cartItems } = useGetCartQuery();
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -21,6 +21,7 @@ const Header = () => {
     try {
       await logout().unwrap();
       dispatch(deleteCredentials());
+      dispatch(resetShipping());
       navigate("/");
     } catch (err) {
       console.log(err);
