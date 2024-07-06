@@ -14,7 +14,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({ origin: ["http://localhost:3000", process.env.frontendURL] }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", process.env.frontendURL],
+    credentials: true,
+  })
+);
 
 // Cookie parser middleware
 app.use(cookieParser());

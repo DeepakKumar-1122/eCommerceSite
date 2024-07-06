@@ -1,18 +1,35 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import { LinkContainer } from 'react-router-bootstrap';
-import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { LinkContainer } from "react-router-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { useLogoutMutation } from "../slices/usersApiSlice";
+import { deleteCredentials } from "../slices/authSlice";
 import logo from "../assets/logo1.png";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems.length);
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [logout] = useLogoutMutation();
+  const logoutHandler = async () => {
+    try {
+      await logout().unwrap();
+      dispatch(deleteCredentials());
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="sm" collapseOnSelect>
         <Container>
-          <LinkContainer  to="/">
+          <LinkContainer to="/">
             <Navbar.Brand>
               <img className="logo" src={logo} alt="PlayShop" />
               PlayShop
@@ -21,20 +38,38 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <LinkContainer  to="/cart"><Nav.Link><FaShoppingCart/> Cart {
-                cartItems.length > 0 && (
-                  <span className="badge bg-light text-dark ms-1">
-                    {cartItems.length}
-                  </span>
-                )
-              }</Nav.Link></LinkContainer>
-              <LinkContainer  to="/login"><Nav.Link><FaUser/> Login</Nav.Link></LinkContainer>
+              <LinkContainer to="/cart">
+                <Nav.Link>
+                  <FaShoppingCart /> Cart{" "}
+                  {cartItems.length > 0 && (
+                    <span className="badge bg-light text-dark ms-1">
+                      {cartItems.length}
+                    </span>
+                  )}
+                </Nav.Link>
+              </LinkContainer>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id="username">
+                  <LinkContainer to={`/profile/${userInfo._id}`}>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <LinkContainer to="/login">
+                  <Nav.Link>
+                    <FaUser /> Login
+                  </Nav.Link>
+                </LinkContainer>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

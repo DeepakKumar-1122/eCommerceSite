@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { useGetProductByIdQuery } from "../slices/productsApiSlice";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
+import Loader from "../components/Loader";
 import { addToCart } from "../slices/cartSlice";
 
 const ProductScreen = () => {
@@ -26,7 +27,7 @@ const ProductScreen = () => {
   const { data: product, isLoading, error } = useGetProductByIdQuery(productId);
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    navigate("/cart")
+    navigate("/cart");
   };
 
   return (
@@ -35,11 +36,7 @@ const ProductScreen = () => {
         Go Back
       </Link>
       {isLoading ? (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
+        <Loader />
       ) : error ? (
         <Message variant="danger">
           {error?.data?.message || error.error}
