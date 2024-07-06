@@ -329,12 +329,12 @@ footer {
 }
 
 .custom-link {
-  color: rgb(85, 84, 84);
+  color: rgb(55, 52, 52);
   text-decoration: none;
 }
 
 .custom-link:hover {
-  color: #343a40;
+  color: #000000;
   text-decoration: underline;
 }
 
@@ -344,6 +344,6 @@ footer {
 
 .custom-input:focus {
   box-shadow: none;
-  box-shadow: 0 0 0 0.25rem rgba(169, 167, 167, 0.3);
+  box-shadow: 0 0 0 0.25rem rgba(100, 99, 99, 0.3);
   border-color: rgba(0, 0, 0, 0.5);
 }

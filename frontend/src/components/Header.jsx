@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { deleteCredentials } from "../slices/authSlice";
 import logo from "../assets/logo1.png";
+import { useGetCartQuery } from "../slices/cartApiSlice";
 
 const Header = () => {
-  const { cartItems } = useSelector((state) => state.cart);
+  // const { cartItems } = useSelector((state) => state.cart);
+  const { data: cartItems } = useGetCartQuery();
   const { userInfo } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ const Header = () => {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart{" "}
-                  {cartItems.length > 0 && (
+                  {cartItems?.length > 0 && (
                     <span className="badge bg-light text-dark ms-1">
                       {cartItems.length}
                     </span>
