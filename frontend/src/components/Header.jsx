@@ -19,7 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     refetch();
-  }, [userInfo]);
+  }, [userInfo, refetch]);
 
   const [logout] = useLogoutMutation();
   const logoutHandler = async () => {
