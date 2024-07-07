@@ -25,6 +25,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         credentials: "include",
       }),
+      providesTags: ["user"],
     }),
     profile: builder.mutation({
       query: (data) => ({
