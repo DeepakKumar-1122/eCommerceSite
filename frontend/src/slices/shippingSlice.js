@@ -7,10 +7,10 @@ const initialState = localStorage.getItem("shipping")
       // orderItems: [],
       shippingAddress: {},
       paymentMethod: "",
-      itemsPrice: 0,
-      shippingPrice: 0,
-      taxPrice: 0,
-      totalPrice: 0,
+      // itemsPrice: 0,
+      // shippingPrice: 0,
+      // taxPrice: 0,
+      // totalPrice: 0,
     };
 
 const shippingSlice = createSlice({
@@ -26,22 +26,22 @@ const shippingSlice = createSlice({
     //   updateCart(state);
     //   localStorage.setItem("shipping", JSON.stringify(state));
     // },
-    setPrices: (state) => {
-      updateCart(state);
-      localStorage.setItem("shipping", JSON.stringify(state));
-    },
+    // setPrices: (state) => {
+    //   updateCart(state);
+    //   localStorage.setItem("shipping", JSON.stringify(state));
+    // },
     setPaymentMethod: (state, action) => {
       state.paymentMethod = action.payload;
       localStorage.setItem("shipping", JSON.stringify(state));
     },
     resetShipping: (state) => {
       state.shippingAddress = initialState.shippingAddress;
-      // state.orderItems = initialState.orderItems;
-      state.itemsPrice = initialState.itemsPrice;
-      state.shippingPrice = initialState.shippingPrice;
-      state.taxPrice = initialState.taxPrice;
-      state.totalPrice = initialState.totalPrice;
       state.paymentMethod = initialState.paymentMethod;
+      // state.orderItems = initialState.orderItems;
+      // state.itemsPrice = initialState.itemsPrice;
+      // state.shippingPrice = initialState.shippingPrice;
+      // state.taxPrice = initialState.taxPrice;
+      // state.totalPrice = initialState.totalPrice;
       localStorage.removeItem("shipping");
       // localStorage.removeItem('cart');
     },

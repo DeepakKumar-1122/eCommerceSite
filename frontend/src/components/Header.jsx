@@ -8,13 +8,18 @@ import { deleteCredentials } from "../slices/authSlice";
 import { useGetCartQuery } from "../slices/cartApiSlice";
 import { resetShipping } from "../slices/shippingSlice";
 import logo from "../assets/logo1.png";
+import { useEffect } from "react";
 
 const Header = () => {
-  const { data: cartItems } = useGetCartQuery();
+  const { data: cartItems, refetch } = useGetCartQuery();
   const { userInfo } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    refetch();
+  }, [userInfo]);
 
   const [logout] = useLogoutMutation();
   const logoutHandler = async () => {
