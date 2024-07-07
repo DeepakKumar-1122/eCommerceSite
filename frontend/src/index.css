@@ -348,7 +348,7 @@ footer {
   border-color: rgba(0, 0, 0, 0.5);
 }
 
-.custom-table td,th {
+.custom-table td,th,thead {
   border-bottom: 0.5px solid #343a40;
   border-bottom-width: thin;
 }
