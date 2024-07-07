@@ -16,6 +16,7 @@ import Rating from "../components/Rating";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { useAddToCartMutation } from "../slices/cartApiSlice";
+import { BASE_URL } from "../constants";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -26,7 +27,9 @@ const ProductScreen = () => {
   const [qty, setQty] = useState(1);
 
   const { data: product, isLoading, error } = useGetProductByIdQuery(productId);
-
+  if(!isLoading){
+    console.log(product.image)
+  }
   const { userInfo } = useSelector((state) => state.auth);
 
   const addToCartHandler = async () => {
@@ -59,7 +62,7 @@ const ProductScreen = () => {
       ) : (
         <Row>
           <Col md={5}>
-            <Image src={product.image} alt={product.name} fluid />
+            <Image src={`${BASE_URL}${product.image}`} alt={product.name} fluid />
           </Col>
           <Col md={4}>
             <ListGroup variant="flush">

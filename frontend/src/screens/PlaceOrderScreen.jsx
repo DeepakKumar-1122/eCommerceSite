@@ -9,6 +9,7 @@ import Loader from "../components/Loader";
 import { useCreateOrderMutation } from "../slices/orderApiSlice";
 import { useGetCartQuery, useClearCartMutation } from "../slices/cartApiSlice";
 import { addDecimals } from "../utils/cartUtils.js";
+import { BASE_URL } from "../constants.js";
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
@@ -99,7 +100,7 @@ const PlaceOrderScreen = () => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={`${BASE_URL}${item.image}`}
                             alt={item.name}
                             fluid
                             rounded

@@ -17,6 +17,7 @@ import {
   useGetCartQuery,
   useRemoveFromCartMutation,
 } from "../slices/cartApiSlice";
+import { BASE_URL } from "../constants";
 
 const CartScreen = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const CartScreen = () => {
                   <ListGroup.Item key={item.product}>
                     <Row>
                       <Col md={2}>
-                        <Image src={item.image} alt={item.name} fluid rounded />
+                        <Image src={`${BASE_URL}${item.image}`} alt={item.name} fluid rounded />
                       </Col>
                       <Col md={4}>
                         <Link
