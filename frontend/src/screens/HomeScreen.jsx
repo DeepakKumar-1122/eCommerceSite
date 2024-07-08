@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
+import ProductCarousel from "../components/ProductCarousel";
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -29,7 +30,12 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
-          {!keyword && (<h1 className="text-center">Latest Products</h1>)}
+          {!keyword && (
+            <>
+              <ProductCarousel />
+              <h1 className="text-center">Latest Products</h1>
+            </>
+          )}
           <Row>
             {data.products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
