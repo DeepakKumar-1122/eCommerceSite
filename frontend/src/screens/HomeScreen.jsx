@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
 import ProductCarousel from "../components/ProductCarousel";
+import Meta from "../components/Meta";
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -17,6 +18,7 @@ const HomeScreen = () => {
 
   return (
     <>
+      <Meta />
       {keyword && (
         <Link to="/" className="btn btn-light">
           Go Back
