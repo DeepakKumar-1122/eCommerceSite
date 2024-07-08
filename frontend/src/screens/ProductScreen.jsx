@@ -21,7 +21,7 @@ import {
   useCreateReviewMutation,
 } from "../slices/productsApiSlice";
 import { useAddToCartMutation } from "../slices/cartApiSlice";
-import { BASE_URL } from "../constants";
+// import { BASE_URL } from "../constants";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -94,7 +94,7 @@ const ProductScreen = () => {
           <Row>
             <Col md={5}>
               <Image
-                src={`${BASE_URL}${product.image}`}
+                src={product.image}
                 alt={product.name}
                 fluid
               />

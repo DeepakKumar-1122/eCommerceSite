@@ -12,7 +12,7 @@ import {
   useGetPaypalClientIdQuery,
   useDeliverOrderMutation,
 } from "../slices/orderApiSlice";
-import { BASE_URL } from "../constants";
+// import { BASE_URL } from "../constants";
 
 const OrderScreen = () => {
   const { id: orderId } = useParams();
@@ -158,7 +158,7 @@ const OrderScreen = () => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={`${BASE_URL}${item.image}`}
+                            src={item.image}
                             alt={item.name}
                             fluid
                             rounded

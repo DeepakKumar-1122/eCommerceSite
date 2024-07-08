@@ -3,7 +3,7 @@ import { Carousel, Image } from "react-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
 import { useGetTopProductsQuery } from "../slices/productsApiSlice";
-import { BASE_URL } from "../constants";
+// import { BASE_URL } from "../constants";
 
 const ProductCarousel = () => {
   const { data: topProducts, isLoading, error } = useGetTopProductsQuery();
@@ -23,7 +23,7 @@ const ProductCarousel = () => {
         <Carousel.Item key={product._id}>
           <Link to={`/product/${product._id}`}>
             <Image
-              src={`${BASE_URL}${product.image}`}
+              src={product.image}
               alt={product.name}
               fluid
             />
