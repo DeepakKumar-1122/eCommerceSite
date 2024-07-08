@@ -352,3 +352,22 @@ footer {
   border-bottom: 0.5px solid #343a40;
   border-bottom-width: thin;
 }
+
+.pagination-dark .page-link {
+  background-color: #343a40;
+  color: white;
+}
+
+.pagination-dark .page-link:hover {
+  background-color: #54575a;
+  color: white;
+}
+
+.pagination-dark .page-item.active .page-link {
+  background-color: #54575a;
+  border-color: #37393d;
+}
+
+.pagination-dark .page-link {
+  border: 1px solid #343a40;
+}
