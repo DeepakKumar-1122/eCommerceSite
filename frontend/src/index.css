@@ -371,3 +371,33 @@ footer {
 .pagination-dark .page-link {
   border: 1px solid #343a40;
 }
+
+.custom-search-box {
+  background-color: #343a40;
+  color: white;
+  border: 1px solid #495057;
+}
+
+.custom-search-box::placeholder {
+  color: #adb5bd;
+}
+
+.custom-search-box:focus {
+  background-color: #495057;
+  color: white;
+  border-color: #6c757d;
+  box-shadow: none;
+}
+
+.custom-search-button {
+  background-color: #495057;
+  border-color: #6c757d;
+  color: white;
+  border-radius: 8px;
+}
+
+.custom-search-button:hover {
+  background-color: #6c757d;
+  border-color: #495057;
+  color: white;
+}

@@ -7,6 +7,7 @@ import { useLogoutMutation } from "../slices/usersApiSlice";
 import { deleteCredentials } from "../slices/authSlice";
 import { useGetCartQuery } from "../slices/cartApiSlice";
 import { resetShipping } from "../slices/shippingSlice";
+import SearchBox from "./SearchBox";
 import logo from "../assets/logo1.png";
 import { useEffect } from "react";
 
@@ -46,6 +47,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <SearchBox />
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart{" "}
