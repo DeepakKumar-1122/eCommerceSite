@@ -13,7 +13,6 @@ PlayShop is a full-stack e-commerce platform built using the MERN stack. This ap
 - Backend: Node.js, Express, MongoDB
 - Authentication: JSON Web Tokens (JWT), HTTP-only cookies
 - Payment Integration: PayPal
-- Hosting: Frontend and backend hosted on Render.com
 ## Installation
 ### Prerequisites
 - Node.js
